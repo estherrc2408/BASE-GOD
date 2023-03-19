@@ -1,0 +1,34 @@
+<%- include('./templates/head'); %>
+    <main>
+        <div class="jumbotron">
+            <h1>Welcome to SERVICES</h1>
+            <h2>
+                <%=title%>
+            </h2>
+        </div>
+        <div id="card-s-container">
+            <h2>Servicios ofrecidos</h2>
+            <% if(services.length>0){ %>
+                <% services.forEach((srv)=>{%>
+                    <div class="card-item">
+                        <div class="card-text">
+                            <h3>
+                                <%= srv.service %>
+                            </h3>
+                            <p>
+                                <%= srv.description %>
+                            </p>
+                                <!--`${srv.date.getDay()}/${srv.date.getMonth()}/${srv.date.getFullYear()}`%> -->
+                        </div>
+                        <div class="false-buttons-container">
+                            <a class="false-button" href=<%=`/admin/services/edit/${srv._id}`%>>Edit</a>
+                            <a class="false-button" href=<%=`/admin/service/delete/${srv._id}`%>>Delete</a>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } %>
+                            <a class="nav-link" href="/admin/services/new">Create new Service</a>
+        </div>
+        <p>número de servicios ofrecidos: <%=services.length%></p>
+    </main>
+    <%- include('./templates/footer'); %>
